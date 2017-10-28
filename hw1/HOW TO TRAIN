@@ -1,0 +1,2 @@
+How to train
+將xxx_model.py裡的mode變數改為'train'
