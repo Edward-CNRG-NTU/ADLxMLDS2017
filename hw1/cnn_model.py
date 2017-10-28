@@ -1,4 +1,4 @@
-# import tensorflow
+import tensorflow
 from keras.models import Sequential
 from keras.layers import Conv1D, Conv2D, MaxPooling2D, Flatten, Merge
 from keras.layers import LSTM, GRU, Bidirectional, TimeDistributed, Masking
@@ -52,7 +52,7 @@ try:
     data_dir = sys.argv[1]
     output_file = sys.argv[2]
 except IndexError:
-    print('usage: python3 cnn_model.py data_dir output_file')
+    print('usage: python cnn_model.py data_dir output_file')
     exit(0)
 
 phone_full_dict = load_phone_dict(data_dir)
@@ -72,8 +72,8 @@ if mode == 'train' or mode == 'continue':
     sample_indexer = make_sliding_indexer(X_raw.shape[0], max_sequence, int(max_sequence * 2 / 3))
 
     # reshape
-    X_all = get_sample_by_indexer(X_raw, sample_indexer, padding='last')
-    Y_all = get_label_by_indexer(Y_raw, sample_indexer, padding='last')
+    X_all = get_sample_by_indexer(X_raw, sample_indexer)
+    Y_all = get_label_by_indexer(Y_raw, sample_indexer)
     print(X_all.shape, Y_all.shape)
 
     data_dim = X_all.shape[2]
@@ -105,7 +105,6 @@ elif mode == 'predict':
 
     model = make_model(780, 108, 49)
     model.load_weights('cnn_model.hdf5')
-    print(model.summary())
 
     Y_test = model.predict_classes([X_test, X_test], batch_size=batch_size)
 

@@ -54,7 +54,58 @@ def load_from_text(data_dir):
     mfcc_train_data, mfcc_mean, mfcc_std = normalize(mfcc_train_data)
     mfcc_test_data = (mfcc_test_data - mfcc_mean) / mfcc_std
 
-    return fbank_test_id, fbank_test_data, fbank_train_id, fbank_train_data,\
+    # try:
+    #     fbank_test_id = np.load('fbank_test_id.npy')
+    #     fbank_test_data = np.load('fbank_test_data.npy')
+    #     print('load /fbank/test.ark done!')
+    #     fbank_train_id = np.load('fbank_train_id.npy')
+    #     fbank_train_data = np.load('fbank_train_data.npy')
+    #     print('load /fbank/train.ark done!')
+    #     mfcc_test_id = np.load('mfcc_test_id.npy')
+    #     mfcc_test_data = np.load('mfcc_test_data.npy')
+    #     print('load /mfcc/test.ark done!')
+    #     mfcc_train_id = np.load('mfcc_train_id.npy')
+    #     mfcc_train_data = np.load('mfcc_train_data.npy')
+    #     print('load /mfcc/train.ark done!')
+    # except IOError:
+    #     print('some files may not exist. load from text...')
+    #
+    #     try:
+    #         fbank_test_id = np.loadtxt(data_dir + '/fbank/test.ark', usecols=0, dtype=np.str_)
+    #         fbank_test_data = np.loadtxt(data_dir + '/fbank/test.ark', usecols=(range(1, 70)))
+    #         print('load /fbank/test.ark done!')
+    #         fbank_train_id = np.loadtxt(data_dir + '/fbank/train.ark', usecols=0, dtype=np.str_)
+    #         fbank_train_data = np.loadtxt(data_dir + '/fbank/train.ark', usecols=(range(1, 70)))
+    #         print('load /fbank/train.ark done!')
+    #         mfcc_test_id = np.loadtxt(data_dir + '/mfcc/test.ark', usecols=0, dtype=np.str_)
+    #         mfcc_test_data = np.loadtxt(data_dir + '/mfcc/test.ark', usecols=(range(1, 40)))
+    #         print('load /mfcc/test.ark done!')
+    #         mfcc_train_id = np.loadtxt(data_dir + '/mfcc/train.ark', usecols=0, dtype=np.str_)
+    #         mfcc_train_data = np.loadtxt(data_dir + '/mfcc/train.ark', usecols=(range(1, 40)))
+    #         print('load /mfcc/train.ark done!')
+    #     except IOError:
+    #         print('some files may not exist.')
+    #         exit(1)
+    #     except ValueError:
+    #         print('binary files may have corrupted.')
+    #         exit(1)
+    #
+    #     fbank_train_data, fbank_mean, fbank_std = normalize(fbank_train_data)
+    #     fbank_test_data = (fbank_test_data - fbank_mean) / fbank_std
+    #
+    #     mfcc_train_data, mfcc_mean, mfcc_std = normalize(mfcc_train_data)
+    #     mfcc_test_data = (mfcc_test_data - mfcc_mean) / mfcc_std
+    #
+    #     np.save('fbank_test_id', fbank_test_id)
+    #     np.save('fbank_test_data', fbank_test_id)
+    #     np.save('fbank_train_id', fbank_test_id)
+    #     np.save('fbank_train_data', fbank_test_id)
+    #     np.save('mfcc_test_id', fbank_test_id)
+    #     np.save('mfcc_test_data', fbank_test_id)
+    #     np.save('mfcc_train_id', fbank_test_id)
+    #     np.save('mfcc_train_data', fbank_test_id)
+
+    return fbank_test_id, fbank_test_data, fbank_train_id, fbank_train_data, \
            mfcc_test_id, mfcc_test_data, mfcc_train_id, mfcc_train_data
 
 

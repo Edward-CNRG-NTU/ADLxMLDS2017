@@ -1,1 +1,1 @@
-python3 cnn_model.py $1 $2
+python cnn_model.py $1 $2
