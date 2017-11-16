@@ -1,0 +1,10 @@
+1.avi,a man is running
+2.avi,a man is riding a gun
+3.avi,a woman is frying ingredients in a pan
+4.avi,a woman is dancing
+5.avi,a man is playing a guitar
+6.avi,a man is jumping
+7.avi,a man is riding a man
+8.avi,a cat is dancing
+9.avi,a elephant is dancing
+10.avi,a woman is cutting a loaf of bread

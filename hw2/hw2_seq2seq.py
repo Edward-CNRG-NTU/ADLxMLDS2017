@@ -116,8 +116,8 @@ def make_train_model(latent_dim=1024, adam_clip=0.):
     tanh_activate = Activation('tanh')
     flatten_layer = Flatten()
     softmax_activate = Activation('softmax')
-    attention_dense_h = Dense(latent_dim, use_bias=False, name='attention_dense_h')
-    attention_dense_e = Dense(latent_dim, use_bias=False, name='attention_dense_e')
+    attention_dense_h = Dense(latent_dim, use_bias=True, name='attention_dense_h')
+    attention_dense_e = Dense(latent_dim, use_bias=True, name='attention_dense_e')
     attention_dense = Dense(1, use_bias=False, name='attention_dense')
 
     def apply_attention(x):
@@ -216,8 +216,8 @@ def load_inference_models(latent_dim=1024):
     tanh_activate = Activation('tanh')
     flatten_layer = Flatten()
     softmax_activate = Activation('softmax')
-    attention_dense_h = Dense(latent_dim, use_bias=False, name='attention_dense_h')
-    attention_dense_e = Dense(latent_dim, use_bias=False, name='attention_dense_e')
+    attention_dense_h = Dense(latent_dim, use_bias=True, name='attention_dense_h')
+    attention_dense_e = Dense(latent_dim, use_bias=True, name='attention_dense_e')
     attention_dense = Dense(1, use_bias=False, name='attention_dense')
 
     def apply_attention(x):
@@ -348,6 +348,7 @@ def inference_sample_beam_search(sample, tokenizer_word_index, encoder_model, de
     # print(scaled_score)
 
     final_sentence = ' '.join([reverse_word_map[i] for i in sentence[scaled_score.argmax()]])
+    final_sentence = final_sentence.strip(' ')
 
     print('\nFinal sentence:%s' % final_sentence, file=log_file)
 
@@ -383,7 +384,7 @@ def inference_sample(sample, tokenizer, encoder_model, decoder_model):
     return ' '.join([reverse_word_map[i] for i in decoded_sentence]), np.vstack(attention_list)
 
 
-latent_dim = 256
+latent_dim = 512
 # data_dir = '../MLDS_hw2_data/'
 try:
     data_dir = sys.argv[1]
