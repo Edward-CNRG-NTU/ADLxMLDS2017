@@ -1,6 +1,3 @@
-# import os
-# os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
-
 import time
 import numpy as np
 from keras import backend as K
